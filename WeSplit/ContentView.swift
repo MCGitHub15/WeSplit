@@ -28,6 +28,17 @@ struct ContentView: View {
                     }
                     .pickerStyle(.navigationLink)
                 }
+
+                Section("How much would you like to tip?"){
+
+                    Picker("Tip percetage", selection: $tipPercentage) {
+                        ForEach(tipPercentages, id: \.self) {
+                            Text($0, format: .percent)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .glassEffect()
+                }
                 Section {
                     Text(checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         .keyboardType(.decimalPad)
